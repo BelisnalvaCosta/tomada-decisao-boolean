@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árvore de Decisão - Portas Lógicas com Imagens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            max-width: 450px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .tree, .result {
+            margin: 10px 0;
+            padding: 10px;
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .output {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Árvore de Decisão - Portas Lógicas</h2>
+    <p>Escolha uma operação lógica e o tipo de visualização:</p>
+    <select id="logicOperation">
+        <option value="AND">AND</option>
+        <option value="XOR">XOR</option>
+        <option value="OR">OR</option>
+        <option value="NOT">NOT (A apenas)</option>
+    </select>
+    <select id="viewType">
+        <option value="lamp">Lâmpada</option>
+        <option value="car">Carro</option>
+    </select>
+    <button onclick="generateTree()">Gerar Árvore de Decisão</button>
+
+    <div class="tree" id="tree"></div>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function generateTree() {
+        const operation = document.getElementById('logicOperation').value;
+        const viewType = document.getElementById('viewType').value;
+        const treeDiv = document.getElementById('tree');
+        const resultDiv = document.getElementById('result');
+
+        let treeStructure = '';
+        let results = '';
+
+        function createOutput(value) {
+            // Escolher imagem de acordo com o tipo de visualização
+            const imgSrc = viewType === 'lamp'
+                ? (value === 1 ? 'img/lamp_on.jpg' : 'img/lamp_off.jpg')
+                : (value === 1 ? 'img/carro_on.jpg' : 'img/carro_off.jpg');
+            const imgAlt = viewType === 'lamp'
+                ? (value === 1 ? 'Lâmpada Acesa' : 'Lâmpada Apagada')
+                : (value === 1 ? 'Carro Funcionando' : 'Carro Parado');
+            return `
+                <div class="output">
+                    <span>Y = ${value}</span>
+                    <img src="${imgSrc}" class="icon" alt="${imgAlt}">
+                </div>
+            `;
+        }
+
+        if (operation === 'AND') {
+            treeStructure = `
+                A = 0, B = 0 -> ${createOutput(0)}<br>
+                A = 0, B = 1 -> ${createOutput(0)}<br>
+                A = 1, B = 0 -> ${createOutput(0)}<br>
+                A = 1, B = 1 -> ${createOutput(1)}
+            `;
+            results = `Tabela-verdade para AND: Y = A AND B`;
+        } else if (operation === 'XOR') {
+            treeStructure = `
+                A = 0, B = 0 -> ${createOutput(0)}<br>
+                A = 0, B = 1 -> ${createOutput(1)}<br>
+                A = 1, B = 0 -> ${createOutput(1)}<br>
+                A = 1, B = 1 -> ${createOutput(0)}
+            `;
+            results = `Tabela-verdade para XOR: Y = A XOR B`;
+        } else if (operation === 'OR') {
+            treeStructure = `
+                A = 0, B = 0 -> ${createOutput(0)}<br>
+                A = 0, B = 1 -> ${createOutput(1)}<br>
+                A = 1, B = 0 -> ${createOutput(1)}<br>
+                A = 1, B = 1 -> ${createOutput(1)}
+            `;
+            results = `Tabela-verdade para OR: Y = A OR B`;
+        } else if (operation === 'NOT') {
+            treeStructure = `
+                A = 0 -> ${createOutput(1)}<br>
+                A = 1 -> ${createOutput(0)}
+            `;
+            results = `Tabela-verdade para NOT: Y = NOT A`;
+        }
+
+        treeDiv.innerHTML = treeStructure;
+        resultDiv.innerHTML = results;
+    }
+</script>
+
+</body>
+</html>
