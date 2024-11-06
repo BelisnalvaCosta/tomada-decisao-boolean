@@ -1,13 +1,13 @@
 # tomada-decisao-boolean
 
-![Árvore de Decisão - Portas Lógicas com Imagens](https://github.com/user-attachments/assets/0b824f89-f654-4d94-a008-8d7a95fe2415)
-
 Projeto feito na IDE Visual Studio Code, linguagem: HTML, JacvaScript e CSS [^1].
 
 Este projeto tem como objetivo praticar e memorizar a tabela verdade. Fiz com HTML para melhor fixação da matéria da Univesp/SP.
 
 Desafio: Obtenha uma árvore de decisão para representar a operação de uma porta lógica. Sendo que A, B são variáveis booleanas, 
-que representam as entradas e Y representa a saída da porta lógica, para as duas situações abaixo representadas pelas seguintes tabelas-verdade:
+que representam as entradas e Y representa a saída da porta lógica.
+
+![Árvore de Decisão - Portas Lógicas com Imagens](https://github.com/user-attachments/assets/0b824f89-f654-4d94-a008-8d7a95fe2415)
 
 ## Explicação
 
