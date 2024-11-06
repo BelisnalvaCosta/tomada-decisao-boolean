@@ -48,7 +48,7 @@ que representam as entradas e Y representa a saída da porta lógica.
 </table>
 
 ## Referências
-Professor: Prof. Dr. Alexandre da Silva Simõe - Semana 5
+Professor: Cristhof Johann Roosen Runge - Semana 5
 
 - [Aplicações em Aprendizado de Máquina](https://ava.univesp.br/ultra/courses/_13240_1/cl/outline)
 
